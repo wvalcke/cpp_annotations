@@ -28,4 +28,10 @@ int main()
     std::cout << ms.count() << endl;
 
     // hours testH = 1ms; // NO compile
+
+    // define own duration type
+    duration<int64_t, ratio<1, 1000>> l_MyMs(10);
+    duration<int64_t, ratio<30, 1>> l_HalfMinute(1);
+    std::cout << "Total sum is " << (l_MyMs+l_HalfMinute).count() << '\n';
+
 }
