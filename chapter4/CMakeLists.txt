@@ -27,3 +27,7 @@ target_compile_features(fileclock PRIVATE cxx_std_23)
 add_executable(scandir)
 target_sources(scandir PRIVATE scandir.cpp)
 target_compile_features(scandir PRIVATE cxx_std_23)
+
+add_executable(iterator)
+target_sources(iterator PRIVATE iterator.cpp)
+target_compile_features(iterator PRIVATE cxx_std_23)
