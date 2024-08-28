@@ -7,3 +7,5 @@ project(CPPANNOTATIONS
 )
 
 add_subdirectory(chapter4)
+add_subdirectory(chapter5)
+
