@@ -6,6 +6,12 @@ project(CPPANNOTATIONS
     LANGUAGES CXX
 )
 
+if (BUILD_ALL_CHAPTERS OR BUILD_CHAPTER4)
 add_subdirectory(chapter4)
+endif()
+if (BUILD_ALL_CHAPTERS OR BUILD_CHAPTER5)
 add_subdirectory(chapter5)
+endif()
+if (BUILD_ALL_CHAPTERS OR BUILD_CHAPTER6)
 add_subdirectory(chapter6)
+endif()

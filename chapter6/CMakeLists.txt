@@ -52,7 +52,32 @@ add_executable(movetest)
 target_sources(movetest PRIVATE movetest.cpp)
 target_compile_features(movetest PRIVATE cxx_std_23)
 
+add_executable(redirect)
+target_sources(redirect PRIVATE redirect.cpp)
+target_compile_features(redirect PRIVATE cxx_std_23)
+
+add_executable(dbsample)
+target_sources(dbsample PRIVATE dbsample.cpp)
+target_compile_features(dbsample PRIVATE cxx_std_23)
+
+add_executable(checkstatus)
+target_sources(checkstatus PRIVATE checkstatus.cpp)
+target_compile_features(checkstatus PRIVATE cxx_std_23)
+
+add_executable(readwrite2)
+target_sources(readwrite2 PRIVATE readwrite2.cpp)
+target_compile_features(readwrite2 PRIVATE cxx_std_23)
+
+add_executable(dbsample2)
+target_sources(dbsample2 PRIVATE dbsample2.cpp)
+target_compile_features(dbsample2 PRIVATE cxx_std_23)
+
+add_executable(reusestringstream)
+target_sources(reusestringstream PRIVATE reusestringstream.cpp)
+target_compile_features(reusestringstream PRIVATE cxx_std_23)
+
 install(TARGETS statusflags align isopen strstream localtime seekinput readdouble
-    inputstring copyinput skipline tietest movestream movetest
+    inputstring copyinput skipline tietest movestream movetest redirect
+    dbsample checkstatus readwrite2 dbsample2 reusestringstream
 DESTINATION chapter6)
-install(FILES double.bin flags.txt DESTINATION chapter6)
+install(FILES double.bin flags.txt nonewline.txt DESTINATION chapter6)
