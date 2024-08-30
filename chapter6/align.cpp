@@ -95,4 +95,15 @@ int main(int arcc, char*argv[])
     cout << 16.0 << ", " << 16.1 << '\n';
     // displays: 16, 16.1
 
+    cin >> ws;
+    // When EOF it returns EOF (which is -1)
+    int l_Char = cin.get();
+    std::cout << "Read char " << l_Char << '\n';
+
+    // binary write
+
+    int x{9}; // tab char
+    cout.write(reinterpret_cast<char const *>(&x), sizeof(int));
+    cout << "***" << '\n';
+
 }

@@ -31,3 +31,6 @@ target_compile_features(scandir PRIVATE cxx_std_23)
 add_executable(iterator)
 target_sources(iterator PRIVATE iterator.cpp)
 target_compile_features(iterator PRIVATE cxx_std_23)
+
+install(TARGETS koenig koenig2 ratio duration clock fileclock scandir iterator
+DESTINATION chapter4)
