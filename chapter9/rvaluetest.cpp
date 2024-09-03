@@ -56,13 +56,21 @@ String factory(int a)
     return l_Ret;
 }
 
+void gun(String data)
+{
+    cout << "Calling gun" << '\n';
+    data.modify("gundata");
+}
+
 int main(int argc, char*argv[])
 {
     fie(String(""));
-    cout << "--------------------" << '\n';
-    String input("input");
-    String ret = apply(input);
-    ret.modify("retmain");
+    {
+        cout << "--------------------" << '\n';
+        String input("input");
+        String ret = apply(input);
+        ret.modify("retmain");
+    }
 
 
     // The g++ compiler will only call the constructor for the 'store' element
@@ -72,9 +80,16 @@ int main(int argc, char*argv[])
     // In the end the destructor is called only once for the store element when main function is left
     // The principle here is that the constructed object inside factory is moved into the store element
     // as such creating something, take a copy and then delete the original is avoided
-    cout << "----------------------" << '\n';
-    String store(factory(0));
-    store.modify("store");
-    cout << "After store creation" << '\n';
+    {
+        cout << "----------------------" << '\n';
+        String store(factory(0));
+        store.modify("store");
+        cout << "After store creation" << '\n';
+    }
+
+    {
+        cout << "----------------------" << '\n';
+        gun(factory(0));
+    }
 
 }
