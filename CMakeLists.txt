@@ -6,6 +6,14 @@ project(CPPANNOTATIONS
     LANGUAGES CXX
 )
 
+if(ENABLE_SANITIZER)
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address  -fsanitize=leak")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address  -fsanitize=leak")
+endif()
+
+if (BUILD_ALL_CHAPTERS OR BUILD_CHAPTER3)
+add_subdirectory(chapter3)
+endif()
 if (BUILD_ALL_CHAPTERS OR BUILD_CHAPTER4)
 add_subdirectory(chapter4)
 endif()

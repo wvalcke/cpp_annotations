@@ -48,7 +48,20 @@ add_executable(copyconstructsuppress)
 target_sources(copyconstructsuppress PRIVATE copyconstructsuppress.cpp)
 target_compile_features(copyconstructsuppress PRIVATE cxx_std_23)
 
+add_executable(aggregate)
+target_sources(aggregate PRIVATE aggregate.cpp)
+target_compile_features(aggregate PRIVATE cxx_std_23)
+
+add_executable(unrestrictedunion)
+target_sources(unrestrictedunion PRIVATE unrestrictedunion.cpp)
+target_compile_features(unrestrictedunion PRIVATE cxx_std_23)
+
+add_executable(leaktest)
+target_sources(leaktest PRIVATE leaktest.cpp)
+target_compile_features(leaktest PRIVATE cxx_std_23)
+
 install(TARGETS rawbytes placementnew destructor wrapper newhandler assignment
     copyconstruct copyconstruct2 fastswap rvalue rvaluetest copyconstructsuppress
+    aggregate unrestrictedunion leaktest
 DESTINATION chapter9)
 #install(FILES double.bin flags.txt nonewline.txt DESTINATION chapter9)
