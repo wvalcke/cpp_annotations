@@ -8,6 +8,10 @@ add_executable(multiindex)
 target_sources(multiindex PRIVATE multiindex.cc)
 target_compile_features(multiindex PRIVATE cxx_std_23)
 
+add_executable(stringconversionerror)
+target_sources(stringconversionerror PRIVATE stringconversionerror.cc)
+target_compile_features(stringconversionerror PRIVATE cxx_std_23)
 
-install(TARGETS intarray multiindex
+
+install(TARGETS intarray multiindex stringconversionerror
 DESTINATION chapter11)
