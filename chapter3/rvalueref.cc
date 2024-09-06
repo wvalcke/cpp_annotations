@@ -43,6 +43,7 @@ class X
         X() { cout << "Constructor\n"; }
         X(X const &other) { cout << "Copycons\n"; }
         X(X &&other) { cout << "Move constructor\n"; }
+        ~X() { cout << "Destructor\n"; }
 
         X &operator=(X const &other) { cout << "std op=\n"; return *this; };
         X &operator=(X &&other) { cout << "rref op=\n"; return *this; };
@@ -50,19 +51,19 @@ class X
 };
 
 
-X &&fun()
+/*X &&fun()
 {
     cout << "calling fun" << '\n';
     X x;
     return std::move(x);
-}
+}*/
 
-/*X fun()
+X fun()
 {
     cout << "calling fun" << '\n';
     X x;
     return x;
-}*/
+}
 
 int main()
 {
