@@ -32,6 +32,10 @@ add_executable(binaryrvalue3)
 target_sources(binaryrvalue3 PRIVATE binaryrvalue3.cpp)
 target_compile_features(binaryrvalue3 PRIVATE cxx_std_23)
 
-install(TARGETS intarray multiindex byte_ex prefixpostfix prefixpostfix2 binaryrvalue
-    binaryrvalue2 binaryrvalue3
+add_executable(stringconversionerror)
+target_sources(stringconversionerror PRIVATE stringconversionerror.cc)
+target_compile_features(stringconversionerror PRIVATE cxx_std_23)
+
+install(TARGETS intarray multiindex stringconversionerror byte_ex prefixpostfix prefixpostfix2 
+    binaryrvalue binaryrvalue2 binaryrvalue3
 DESTINATION chapter11)
