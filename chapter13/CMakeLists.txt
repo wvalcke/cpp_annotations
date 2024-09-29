@@ -16,5 +16,16 @@ add_executable(destructbase)
 target_sources(destructbase PRIVATE destructbase.cpp)
 target_compile_features(destructbase PRIVATE cxx_std_23)
 
-install(TARGETS derived inheretconstruct aggregateinit destructbase
+add_executable(nstrings)
+target_sources(nstrings PRIVATE nstrings.cc)
+target_compile_features(nstrings PRIVATE cxx_std_23)
+
+add_executable(initplacenew)
+target_sources(initplacenew PRIVATE initplacenew.cc)
+target_compile_features(initplacenew PRIVATE cxx_std_23)
+
+install(TARGETS derived inheretconstruct aggregateinit destructbase nstrings
+    initplacenew
 DESTINATION chapter13)
+
+install(FILES nstrings.cc DESTINATION chapter13)
