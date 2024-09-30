@@ -27,7 +27,8 @@
         public:
             Third(int x)
             :
-                Second(x)
+                Second(x),
+                First(x)
             {}
     };
     int main()
