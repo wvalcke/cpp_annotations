@@ -24,7 +24,20 @@ add_executable(badcast)
 target_sources(badcast PRIVATE badcast.cc)
 target_compile_features(badcast PRIVATE cxx_std_23)
 
+add_executable(typeidtest)
+target_sources(typeidtest PRIVATE typeidtest.cc)
+target_compile_features(typeidtest PRIVATE cxx_std_23)
+
+add_executable(emptythrow)
+target_sources(emptythrow PRIVATE emptythrow.cc)
+target_compile_features(emptythrow PRIVATE cxx_std_23)
+
+add_executable(virtcons2)
+target_sources(virtcons2 PRIVATE virtcons2.cc)
+target_compile_features(virtcons2 PRIVATE cxx_std_23)
+
 install(TARGETS purevirtimpl notvirtual virtualinherit virtualinherit2 trucktrailer badcast
+    typeidtest emptythrow virtcons2
 DESTINATION chapter14)
 
 #install(FILES nstrings.cc DESTINATION chapter13)
