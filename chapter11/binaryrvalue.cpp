@@ -75,5 +75,8 @@ int main(int argc, char*argv[])
     Binary b2{11};
     Binary b3{30};
     Binary b4 = b1 + b2 + b3 + b3 + b3;
-
+    cout << "-------------------" << '\n';
+    // Due to copy ilision operator+ is called, and the Binary constructor which immediately 
+    // initializes res value
+    Binary res = b1 + b2;
 }

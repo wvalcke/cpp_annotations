@@ -1,0 +1,5 @@
+A temporary object bound to a reference parameter in a function call persists until the completion of 
+the full-expression containing the call.
+
+The lifetime of a temporary bound to the returned value in a function return statement is not extended; 
+the temporary is destroyed at the end of the full-expression in the return statement.
