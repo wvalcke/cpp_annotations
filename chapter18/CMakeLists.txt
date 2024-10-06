@@ -72,9 +72,17 @@ add_executable(insertcpp)
 target_sources(insertcpp PRIVATE insertcpp.cc)
 target_compile_features(insertcpp PRIVATE cxx_std_23)
 
+add_executable(sharedinsert)
+target_sources(sharedinsert PRIVATE sharedinsert.cc)
+target_compile_features(sharedinsert PRIVATE cxx_std_23)
+
+add_executable(sharedderivedtest)
+target_sources(sharedderivedtest PRIVATE sharedderivedtest.cc)
+target_compile_features(sharedderivedtest PRIVATE cxx_std_23)
+
 install(TARGETS sort plus plusaccumulate strcasecmp classtypeplus negate notprog iterator
     constiterator distance backinserter istreamiterator ostreamiterator streambufiter
-    moveiter uniqueother deleter insertcpp
+    moveiter uniqueother deleter insertcpp sharedinsert sharedderivedtest
 DESTINATION chapter18)
 
 #install(FILES nstrings.cc DESTINATION chapter13)
