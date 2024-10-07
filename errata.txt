@@ -1,3 +1,6 @@
 yo/generic/examples/adjacentfind.cc
 Line 29, "*result" moet *result zijn
 
+yo/generic/examples/copybackward.cc
+Klop dit voorbeeld wel, volgens c++ standaard zou dit een probleem zijn
+
