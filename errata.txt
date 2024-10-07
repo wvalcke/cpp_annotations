@@ -1,0 +1,3 @@
+yo/generic/examples/adjacentfind.cc
+Line 29, "*result" moet *result zijn
+

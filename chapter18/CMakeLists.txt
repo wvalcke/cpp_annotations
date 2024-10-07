@@ -80,9 +80,22 @@ add_executable(sharedderivedtest)
 target_sources(sharedderivedtest PRIVATE sharedderivedtest.cc)
 target_compile_features(sharedderivedtest PRIVATE cxx_std_23)
 
+add_executable(tie)
+target_sources(tie PRIVATE tie.cc)
+target_compile_features(tie PRIVATE cxx_std_23)
+
+add_executable(optional)
+target_sources(optional PRIVATE optional.cc)
+target_compile_features(optional PRIVATE cxx_std_23)
+
+add_executable(optionalemplace)
+target_sources(optionalemplace PRIVATE optionalemplace.cc)
+target_compile_features(optionalemplace PRIVATE cxx_std_23)
+
 install(TARGETS sort plus plusaccumulate strcasecmp classtypeplus negate notprog iterator
     constiterator distance backinserter istreamiterator ostreamiterator streambufiter
     moveiter uniqueother deleter insertcpp sharedinsert sharedderivedtest
+    tie optional optionalemplace
 DESTINATION chapter18)
 
 #install(FILES nstrings.cc DESTINATION chapter13)
