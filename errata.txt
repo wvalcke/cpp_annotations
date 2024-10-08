@@ -4,3 +4,21 @@ Line 29, "*result" moet *result zijn
 yo/generic/examples/copybackward.cc
 Klop dit voorbeeld wel, volgens c++ standaard zou dit een probleem zijn
 
+yo/generic/examples/innerproduct.cc
+init van string met "\t" is eigenlijk niet nodig
+
+yo/generic/examples/inplacemerge.cc
+Bugje : line 8 strcasecmp == 0 moet < 0 zijn
+    bool caseString(string const &first, string const &second)
+    {
+        return strcasecmp(first.c_str(), second.c_str()) < 0;
+    }
+
+yo/generic/examples/ispartitioned.cc
+Commentaar op einde is verkeerd, moet zijn
+
+partitioned before: 0
+first value returning 'false' when partitioning: 5
+1 -2 -8 -4 -6 5 7 3 9 
+partitioned after: 1
+
