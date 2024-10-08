@@ -22,3 +22,40 @@ first value returning 'false' when partitioning: 5
 1 -2 -8 -4 -6 5 7 3 9 
 partitioned after: 1
 
+yo/generic/examples/issorteduntil.cc
+Commentaar op einde is verkeerd, moet zijn
+
+no initially sorted subrange
+sorted subrange: -8 -6 -4 -2 1 
+
+Section 19.1.31 : Moet operator< zijn 
+The second prototype: one is returned if the binary predicate comp(one, two) returns false,
+Misschien best vermelden dat bij prototype 3 het ook operator< is
+
+Section 19.1.32 : 
+bij de uitleg van second prototype: The element for which pred returns most often 'true'
+true moet hier false zijn
+Bij het prototype 5 & 6 in het lijstje staat max_element, dit moet 2x minmax_element zijn.
+
+yo/generic/examples/maxelement.cc
+lijn 31 moet zijn
+"The " << type << ". absolute int value is " <<
+
+yo/generic/examples/minmax.cc
+probleem met auto, dit geeft een pair<const int&, const int&> maar beide
+referenties zijn weg na de expressie. 
+Volgend programma geeft vreemde resultaten, als we beide auto keywords
+vervangen door pair<int, int> is het probleem weg
+
+        auto values = minmax(5, 2, less<int>{});
+        //pair<const int&, const int&> otherpair = minmax(5, 2, less<int>{});
+        auto otherpair = minmax(5, 2, less<int>{});
+        cout << values.first << " is smaller than " << values.second << '\n';
+
+section 19.1.43 : 3e prototype lijkt niet te bestaan volgens cppreference.com
+
+section 19.1.45 : The text : The first predicate: must be The first prototype
+
+yo/generic/examples/replace.cc
+Line 45 uit commentaar halen, anders compileert het niet
+

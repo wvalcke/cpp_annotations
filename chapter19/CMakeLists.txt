@@ -104,9 +104,101 @@ add_executable(issorted)
 target_sources(issorted PRIVATE issorted.cc)
 target_compile_features(issorted PRIVATE cxx_std_23)
 
+add_executable(issorteduntil)
+target_sources(issorteduntil PRIVATE issorteduntil.cc)
+target_compile_features(issorteduntil PRIVATE cxx_std_23)
+
+add_executable(iterswap)
+target_sources(iterswap PRIVATE iterswap.cc)
+target_compile_features(iterswap PRIVATE cxx_std_23)
+
+add_executable(lexicographicalcompare)
+target_sources(lexicographicalcompare PRIVATE lexicographicalcompare.cc)
+target_compile_features(lexicographicalcompare PRIVATE cxx_std_23)
+
+add_executable(lowerbound)
+target_sources(lowerbound PRIVATE lowerbound.cc)
+target_compile_features(lowerbound PRIVATE cxx_std_23)
+
+add_executable(max)
+target_sources(max PRIVATE max.cc)
+target_compile_features(max PRIVATE cxx_std_23)
+
+add_executable(maxelement)
+target_sources(maxelement PRIVATE maxelement.cc)
+target_compile_features(maxelement PRIVATE cxx_std_23)
+
+add_executable(merge)
+target_sources(merge PRIVATE merge.cc)
+target_compile_features(merge PRIVATE cxx_std_23)
+
+add_executable(minmax)
+target_sources(minmax PRIVATE minmax.cc)
+target_compile_features(minmax PRIVATE cxx_std_23)
+
+add_executable(mismatch)
+target_sources(mismatch PRIVATE mismatch.cc)
+target_compile_features(mismatch PRIVATE cxx_std_23)
+
+add_executable(move)
+target_sources(move PRIVATE move.cc)
+target_compile_features(move PRIVATE cxx_std_23)
+
+add_executable(nextpermutation)
+target_sources(nextpermutation PRIVATE nextpermutation.cc)
+target_compile_features(nextpermutation PRIVATE cxx_std_23)
+
+add_executable(nthelement)
+target_sources(nthelement PRIVATE nthelement.cc)
+target_compile_features(nthelement PRIVATE cxx_std_23)
+
+add_executable(partialsort)
+target_sources(partialsort PRIVATE partialsort.cc)
+target_compile_features(partialsort PRIVATE cxx_std_23)
+
+add_executable(partialsum)
+target_sources(partialsum PRIVATE partialsum.cc)
+target_compile_features(partialsum PRIVATE cxx_std_23)
+
+add_executable(partition)
+target_sources(partition PRIVATE partition.cc)
+target_compile_features(partition PRIVATE cxx_std_23)
+
+add_executable(partitioncopy)
+target_sources(partitioncopy PRIVATE partitioncopy.cc)
+target_compile_features(partitioncopy PRIVATE cxx_std_23)
+
+add_executable(reduce)
+target_sources(reduce PRIVATE reduce.cc)
+target_compile_features(reduce PRIVATE cxx_std_23)
+target_link_libraries(reduce PRIVATE TBB::tbb)
+
+add_executable(remove)
+target_sources(remove PRIVATE remove.cc)
+target_compile_features(remove PRIVATE cxx_std_23)
+
+add_executable(replace)
+target_sources(replace PRIVATE replace.cc)
+target_compile_features(replace PRIVATE cxx_std_23)
+
+add_executable(replacecopy)
+target_sources(replacecopy PRIVATE replacecopy.cc)
+target_compile_features(replacecopy PRIVATE cxx_std_23)
+
+add_executable(replacecopyif)
+target_sources(replacecopyif PRIVATE replacecopyif.cc)
+target_compile_features(replacecopyif PRIVATE cxx_std_23)
+
+add_executable(reverse)
+target_sources(reverse PRIVATE reverse.cc)
+target_compile_features(reverse PRIVATE cxx_std_23)
+
 install(TARGETS accumulate adjacentdifference adjacentfind allof beginend
     binarysearch copy_copyif copybackward count_countif equal equalrange exchange
     fill find findend findfirstof foreach foreachclass generate includes innerproduct
-    inplacemerge iota ispartitioned ispermutation issorted
+    inplacemerge iota ispartitioned ispermutation issorted issorteduntil
+    iterswap lexicographicalcompare lowerbound max maxelement merge minmax
+    mismatch move nextpermutation nthelement partialsort partialsum partition
+    partitioncopy reduce remove replace replacecopy replacecopyif reverse
 DESTINATION chapter19)
 #install(FILES double.bin flags.txt nonewline.txt DESTINATION chapter3)

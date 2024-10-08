@@ -11,6 +11,8 @@ if(ENABLE_SANITIZER)
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fsanitize=address  -fsanitize=leak")
 endif()
 
+find_package(TBB REQUIRED)
+
 if (BUILD_ALL_CHAPTERS OR BUILD_CHAPTER3)
 add_subdirectory(chapter3)
 endif()
