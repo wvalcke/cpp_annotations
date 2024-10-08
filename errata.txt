@@ -59,3 +59,4 @@ section 19.1.45 : The text : The first predicate: must be The first prototype
 yo/generic/examples/replace.cc
 Line 45 uit commentaar halen, anders compileert het niet
 
+section 19.1.51 : bij 1e function prototype is er een syntax probleem met de yo code

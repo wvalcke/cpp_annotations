@@ -193,6 +193,40 @@ add_executable(reverse)
 target_sources(reverse PRIVATE reverse.cc)
 target_compile_features(reverse PRIVATE cxx_std_23)
 
+add_executable(rotate)
+target_sources(rotate PRIVATE rotate.cc)
+target_compile_features(rotate PRIVATE cxx_std_23)
+
+add_executable(sample)
+target_sources(sample PRIVATE sample.cc)
+target_compile_features(sample PRIVATE cxx_std_23)
+
+add_executable(search)
+target_sources(search PRIVATE search.cc)
+target_compile_features(search PRIVATE cxx_std_23)
+
+add_executable(setdifference)
+target_sources(setdifference PRIVATE setdifference.cc)
+target_compile_features(setdifference PRIVATE cxx_std_23)
+
+add_executable(setintersection)
+target_sources(setintersection PRIVATE setintersection.cc)
+target_compile_features(setintersection PRIVATE cxx_std_23)
+
+add_executable(setsymmetricdifference)
+target_sources(setsymmetricdifference PRIVATE setsymmetricdifference.cc)
+target_compile_features(setsymmetricdifference PRIVATE cxx_std_23)
+
+add_executable(setunion)
+target_sources(setunion PRIVATE setunion.cc)
+target_compile_features(setunion PRIVATE cxx_std_23)
+
+add_executable(sortch19)
+target_sources(sortch19 PRIVATE sort.cc)
+set_target_properties(sortch19 PROPERTIES OUTPUT_NAME sort)
+target_compile_features(sortch19 PRIVATE cxx_std_23)
+target_link_libraries(sortch19 PRIVATE TBB::tbb)
+
 install(TARGETS accumulate adjacentdifference adjacentfind allof beginend
     binarysearch copy_copyif copybackward count_countif equal equalrange exchange
     fill find findend findfirstof foreach foreachclass generate includes innerproduct
@@ -200,5 +234,7 @@ install(TARGETS accumulate adjacentdifference adjacentfind allof beginend
     iterswap lexicographicalcompare lowerbound max maxelement merge minmax
     mismatch move nextpermutation nthelement partialsort partialsum partition
     partitioncopy reduce remove replace replacecopy replacecopyif reverse
+    rotate sample search setdifference setintersection setsymmetricdifference
+    setunion sortch19
 DESTINATION chapter19)
 #install(FILES double.bin flags.txt nonewline.txt DESTINATION chapter3)
