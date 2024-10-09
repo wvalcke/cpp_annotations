@@ -72,3 +72,16 @@ Each element of [result, last) has a valid but unspecified state
 Vandaar dat de output van het programm niet meer overeenkomt met de commentaar
 onderaan. 
 
+------------------------------------------------
+
+Hoofdstuk 20
+
+sectie 20.1.2 : 
+Bolletje 3 : uitleg suggereert dat lijn 58 compileert omdat de klasse een move constructor heeft. 
+Maar de echte reden dat het compileert is dat de copy constructor bestaat. 
+Als je die wegneemt compileert het niet meer, ook al heb je nog een move constructor
+
+Bolletje 4 : Lijn 55 compileert niet omdat we geen move constructor hebben staat
+in de text. Maar het compileert wel als er een copy constructor is. De move constructor
+heeft hier niets mee te maken.
+
