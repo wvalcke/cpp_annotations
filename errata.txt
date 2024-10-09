@@ -1,11 +1,8 @@
 yo/generic/examples/adjacentfind.cc
 Line 29, "*result" moet *result zijn
 
-yo/generic/examples/copybackward.cc
-Klop dit voorbeeld wel, volgens c++ standaard zou dit een probleem zijn
-
 yo/generic/examples/innerproduct.cc
-init van string met "\t" is eigenlijk niet nodig
+init van string met "\t" is eigenlijk niet nodig (lijn 46)
 
 yo/generic/examples/inplacemerge.cc
 Bugje : line 8 strcasecmp == 0 moet < 0 zijn
@@ -60,3 +57,18 @@ yo/generic/examples/replace.cc
 Line 45 uit commentaar halen, anders compileert het niet
 
 section 19.1.51 : bij 1e function prototype is er een syntax probleem met de yo code
+
+yo/generic/examples/transformreduce.cc
+init van string met "\t" is eigenlijk niet nodig (lijn 47)
+
+section 19.1.59 : De prototype definities unique_copy moeten weg. De volgende sectie
+beschrijft deze
+Strict genomen moet de sequence niet gesorteerd zijn, het is geen voorwaarde. 
+(en geldt ook voor unique_copy)
+
+yo/generic/examples/unique.cc
+Daar de C++ standaard niets definieert omtrent de [result, last) sequence:
+Each element of [result, last) has a valid but unspecified state
+Vandaar dat de output van het programm niet meer overeenkomt met de commentaar
+onderaan. 
+

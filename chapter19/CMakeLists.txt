@@ -227,6 +227,42 @@ set_target_properties(sortch19 PROPERTIES OUTPUT_NAME sort)
 target_compile_features(sortch19 PRIVATE cxx_std_23)
 target_link_libraries(sortch19 PRIVATE TBB::tbb)
 
+add_executable(swap)
+target_sources(swap PRIVATE swap.cc)
+target_compile_features(swap PRIVATE cxx_std_23)
+
+add_executable(transform)
+target_sources(transform PRIVATE transform.cc)
+target_compile_features(transform PRIVATE cxx_std_23)
+
+add_executable(transformreduce)
+target_sources(transformreduce PRIVATE transformreduce.cc)
+target_compile_features(transformreduce PRIVATE cxx_std_23)
+
+add_executable(uninitialized)
+target_sources(uninitialized PRIVATE uninitialized.cc)
+target_compile_features(uninitialized PRIVATE cxx_std_23)
+
+add_executable(unique)
+target_sources(unique PRIVATE unique.cc)
+target_compile_features(unique PRIVATE cxx_std_23)
+
+add_executable(uniquecopy)
+target_sources(uniquecopy PRIVATE uniquecopy.cc)
+target_compile_features(uniquecopy PRIVATE cxx_std_23)
+
+add_executable(upperbound)
+target_sources(upperbound PRIVATE upperbound.cc)
+target_compile_features(upperbound PRIVATE cxx_std_23)
+
+add_executable(upperbound2)
+target_sources(upperbound2 PRIVATE upperbound2.cc)
+target_compile_features(upperbound2 PRIVATE cxx_std_23)
+
+add_executable(heap)
+target_sources(heap PRIVATE heap.cc)
+target_compile_features(heap PRIVATE cxx_std_23)
+
 install(TARGETS accumulate adjacentdifference adjacentfind allof beginend
     binarysearch copy_copyif copybackward count_countif equal equalrange exchange
     fill find findend findfirstof foreach foreachclass generate includes innerproduct
@@ -235,6 +271,7 @@ install(TARGETS accumulate adjacentdifference adjacentfind allof beginend
     mismatch move nextpermutation nthelement partialsort partialsum partition
     partitioncopy reduce remove replace replacecopy replacecopyif reverse
     rotate sample search setdifference setintersection setsymmetricdifference
-    setunion sortch19
+    setunion sortch19 swap transform transformreduce uninitialized unique
+    uniquecopy upperbound upperbound2 heap
 DESTINATION chapter19)
 #install(FILES double.bin flags.txt nonewline.txt DESTINATION chapter3)
