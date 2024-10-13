@@ -75,8 +75,28 @@ target_compile_features(events PRIVATE cxx_std_23)
 add_subdirectory(semaphore)
 add_subdirectory(multisort)
 
+add_executable(async1)
+target_sources(async1 PRIVATE async1.cc)
+target_compile_features(async1 PRIVATE cxx_std_23)
+
+add_executable(async2)
+target_sources(async2 PRIVATE async2.cc)
+target_compile_features(async2 PRIVATE cxx_std_23)
+
+add_executable(async4)
+target_sources(async4 PRIVATE async4.cc)
+target_compile_features(async4 PRIVATE cxx_std_23)
+
+add_executable(sharedfuture)
+target_sources(sharedfuture PRIVATE sharedfuture.cc)
+target_compile_features(sharedfuture PRIVATE cxx_std_23)
+
+add_executable(packagedtask)
+target_sources(packagedtask PRIVATE packagedtask.cc)
+target_compile_features(packagedtask PRIVATE cxx_std_23)
+
 install(TARGETS hello threadargs_wva threadargs memberthreads locals functorthread
     threads2 detached terminate threadlocal stoptoken stopcallback callonce staticlocal
-    insertguard scopedlock lock events
+    insertguard scopedlock lock events async1 async2 async4 sharedfuture packagedtask
 DESTINATION chapter20)
 #install(FILES double.bin flags.txt nonewline.txt DESTINATION chapter3)
