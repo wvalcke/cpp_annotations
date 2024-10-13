@@ -85,3 +85,11 @@ Bolletje 4 : Lijn 55 compileert niet omdat we geen move constructor hebben staat
 in de text. Maar het compileert wel als er een copy constructor is. De move constructor
 heeft hier niets mee te maken.
 
+Singleton &Singleton::instance() moet eigenlijk Singleton *Singleton::instance() zijn
+
+section 20.30.2 deadlocks, het voorbeeld moet dat van lock.cc ipv scopedlock.cc
+section 20.30.4 ipv voorbeeld lock.cc moet dit hier scopedlock.cc zijn
+
+Bij de multisort/main.ih zou ik de mutex mutable maken zodat beide const methods (size & empty)
+een lock kunnen doen met de mutex.
+Zelfde opmerking voor de Semaphore::size member

@@ -1,0 +1,14 @@
+#define ADD_LIBRARIES       "semaphore"
+#define ADD_LIBRARY_PATHS   "../../semaphore/tmp"
+#define CXX            "g++"
+#define CXXFLAGS        " -Wall -O2"
+#define LDFLAGS         ""
+#define MAIN                "main.cc"
+#define OBJ_EXT             ".o"
+#define REFRESH
+#define SHAREDREQ           ""
+#define SOURCES             "*.cc"
+#define TMP_DIR             "tmp"
+#define USE_ECHO              ON
+
+#define DEFCOM "program"
