@@ -93,3 +93,10 @@ section 20.30.4 ipv voorbeeld lock.cc moet dit hier scopedlock.cc zijn
 Bij de multisort/main.ih zou ik de mutex mutable maken zodat beide const methods (size & empty)
 een lock kunnen doen met de mutex.
 Zelfde opmerking voor de Semaphore::size member
+
+In packagedtask.cc is er een mogelijkheid dat door een spurious event de 
+garage thread al begint aan de service task nog voor die is ingevuld.
+De lock lock_guard<mutex> lk(carDetailsMutex); zet de carDetails, maar niet de 
+service task. Hierdoor kan dus de gararge thread beginnen aan de task nog voor die 
+is ingevuld.
+

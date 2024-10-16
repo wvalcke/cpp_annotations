@@ -95,8 +95,21 @@ add_executable(packagedtask)
 target_sources(packagedtask PRIVATE packagedtask.cc)
 target_compile_features(packagedtask PRIVATE cxx_std_23)
 
+add_executable(packagedtask2)
+target_sources(packagedtask2 PRIVATE packagedtask2.cc)
+target_compile_features(packagedtask2 PRIVATE cxx_std_23)
+
+add_executable(promise1)
+target_sources(promise1 PRIVATE promise1.cc)
+target_compile_features(promise1 PRIVATE cxx_std_23)
+
+add_executable(promise2)
+target_sources(promise2 PRIVATE promise2.cc)
+target_compile_features(promise2 PRIVATE cxx_std_23)
+
 install(TARGETS hello threadargs_wva threadargs memberthreads locals functorthread
     threads2 detached terminate threadlocal stoptoken stopcallback callonce staticlocal
     insertguard scopedlock lock events async1 async2 async4 sharedfuture packagedtask
+    packagedtask2 promise1 promise2
 DESTINATION chapter20)
 #install(FILES double.bin flags.txt nonewline.txt DESTINATION chapter3)
