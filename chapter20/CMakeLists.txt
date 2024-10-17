@@ -107,6 +107,9 @@ add_executable(promise2)
 target_sources(promise2 PRIVATE promise2.cc)
 target_compile_features(promise2 PRIVATE cxx_std_23)
 
+add_subdirectory(multicompile)
+add_subdirectory(osyncstream)
+
 install(TARGETS hello threadargs_wva threadargs memberthreads locals functorthread
     threads2 detached terminate threadlocal stoptoken stopcallback callonce staticlocal
     insertguard scopedlock lock events async1 async2 async4 sharedfuture packagedtask

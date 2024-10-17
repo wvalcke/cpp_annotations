@@ -1,0 +1,13 @@
+#define ADD_LIBRARIES       "semaphore cmdfork bobcat"
+#define ADD_LIBRARY_PATHS   "../../cmdfork/tmp ../../semaphore/tmp"
+#define CLS
+#define CXX            "g++"
+#define CXXFLAGS        "--std=c++20 -Wall -O2"
+#define LDFLAGS         ""
+#define MAIN                "main.cc"
+#define OBJ_EXT             ".o"
+#define SHAREDREQ           ""
+#define SOURCES             "*.cc"
+#define TMP_DIR             "tmp"
+#define USE_ECHO              ON
+#define DEFCOM "program"

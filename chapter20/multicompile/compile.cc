@@ -3,7 +3,7 @@
 //code
 Result compile(string const &line)
 {
-    string command("/usr/bin/g++ -Wall -c " + line);
+    /*string command("/usr/bin/g++ -Wall -c " + line);
 
     CmdFork cmdFork(command);
     cmdFork.fork();
@@ -12,7 +12,9 @@ Result compile(string const &line)
                 line + "\n" + cmdFork.childOutput()};
 
     if (not ret.ok)
-        g_done = true;
+        g_done = true;*/
+
+    Result ret {true, "This is the result\n"};
 
     return ret;
 }
