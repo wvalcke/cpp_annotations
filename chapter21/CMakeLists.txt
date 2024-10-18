@@ -16,5 +16,13 @@ add_executable(local_anonymtype)
 target_sources(local_anonymtype PRIVATE local_anonymtype.cc)
 target_compile_features(local_anonymtype PRIVATE cxx_std_23)
 
-install(TARGETS declval latereturntype refwrap local_anonymtype
+add_executable(source1)
+target_sources(source1 PRIVATE source1.cc main.cc)
+target_compile_features(source1 PRIVATE cxx_std_23)
+
+add_executable(source2)
+target_sources(source2 PRIVATE source2.cc main.cc)
+target_compile_features(source1 PRIVATE cxx_std_23)
+
+install(TARGETS declval latereturntype refwrap local_anonymtype source1 source2
 DESTINATION chapter21)
