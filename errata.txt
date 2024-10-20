@@ -100,3 +100,10 @@ De lock lock_guard<mutex> lk(carDetailsMutex); zet de carDetails, maar niet de
 service task. Hierdoor kan dus de gararge thread beginnen aan de task nog voor die 
 is ingevuld.
 
+---------------------------------------
+
+Hoofdstuk 22
+
+Voorbeeld yo/classtemplates/examples/genlambda.cc mist een include van <numeric>, anders compileert
+de accumulate method niet.
+
