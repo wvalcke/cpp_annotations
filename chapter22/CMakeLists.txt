@@ -36,9 +36,9 @@ add_executable(variadic)
 target_sources(variadic PRIVATE variadic.cc)
 target_compile_features(variadic PRIVATE cxx_std_23)
 
-add_executable(forwardtest)
-target_sources(forwardtest PRIVATE forwardtest.cc)
-target_compile_features(forwardtest PRIVATE cxx_std_23)
+add_executable(forwardtestch22)
+target_sources(forwardtestch22 PRIVATE forwardtest.cc)
+target_compile_features(forwardtestch22 PRIVATE cxx_std_23)
 
 add_executable(multibaseclass)
 target_sources(multibaseclass PRIVATE multibaseclass.cc)
@@ -52,6 +52,15 @@ add_executable(foldexpression)
 target_sources(foldexpression PRIVATE foldexpression.cc)
 target_compile_features(foldexpression PRIVATE cxx_std_23)
 
+add_executable(tupletest)
+target_sources(tupletest PRIVATE tupletest.cc)
+target_compile_features(tupletest PRIVATE cxx_std_23)
+
+add_executable(bindings)
+target_sources(bindings PRIVATE bindings.cc)
+target_compile_features(bindings PRIVATE cxx_std_23)
+
 install(TARGETS deducetype cirque extern genlambda genlambda2 cirquevector cirquepartial
-    matrix variadic forwardtest multibaseclass countnontype foldexpression
+    matrix variadic forwardtestch22 multibaseclass countnontype foldexpression tupletest
+    bindings
 DESTINATION chapter22)

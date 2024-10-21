@@ -134,3 +134,11 @@ CirQue<std::vector<Data>> &CirQue<std::vector<Data>>::operator=(
 }
 return *this was hier te kort
 
+Section 22.5.5 
+template <class ...Pack>
+    void call(Pack &&...args)
+    {
+        ... , args();
+    };
+
+Compileert niet, er moet staan (... , args());

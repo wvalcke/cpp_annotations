@@ -26,10 +26,20 @@ ostream& out2(ostream& out, Pack&& ...args)
     return (out << ... << args);
 }
 
+template<typename ...Pack>
+void call(Pack&& ...args)
+{
+    (... , (args()));
+}
+
 int main(int argc, char*argv[])
 {
     std::cout << "Sum is " << sum<int>(1, 2, 3) << '\n';
     std::cout << "Sum is " << othersum<int>(1, 2, 3) << '\n';
     std::cout << "Sum double is " << sumdouble<int>(1, 2, 3) << '\n';
     out2(cout, 1, 2, 3, "This is text", 5);
+    cout << '\n';
+
+    call([]() {cout << "This is the first\n"; }, [](){cout << "This is the second\n";});
+
 }
