@@ -20,5 +20,38 @@ add_executable(genlambda2)
 target_sources(genlambda2 PRIVATE genlambda2.cc)
 target_compile_features(genlambda2 PRIVATE cxx_std_23)
 
-install(TARGETS deducetype cirque extern genlambda genlambda2
+add_executable(cirquevector)
+target_sources(cirquevector PRIVATE cirquevector.cc)
+target_compile_features(cirquevector PRIVATE cxx_std_23)
+
+add_executable(cirquepartial)
+target_sources(cirquepartial PRIVATE cirquepartial.cc)
+target_compile_features(cirquepartial PRIVATE cxx_std_23)
+
+add_executable(matrix)
+target_sources(matrix PRIVATE matrix.cc)
+target_compile_features(matrix PRIVATE cxx_std_23)
+
+add_executable(variadic)
+target_sources(variadic PRIVATE variadic.cc)
+target_compile_features(variadic PRIVATE cxx_std_23)
+
+add_executable(forwardtest)
+target_sources(forwardtest PRIVATE forwardtest.cc)
+target_compile_features(forwardtest PRIVATE cxx_std_23)
+
+add_executable(multibaseclass)
+target_sources(multibaseclass PRIVATE multibaseclass.cc)
+target_compile_features(multibaseclass PRIVATE cxx_std_23)
+
+add_executable(countnontype)
+target_sources(countnontype PRIVATE countnontype.cc)
+target_compile_features(countnontype PRIVATE cxx_std_23)
+
+add_executable(foldexpression)
+target_sources(foldexpression PRIVATE foldexpression.cc)
+target_compile_features(foldexpression PRIVATE cxx_std_23)
+
+install(TARGETS deducetype cirque extern genlambda genlambda2 cirquevector cirquepartial
+    matrix variadic forwardtest multibaseclass countnontype foldexpression
 DESTINATION chapter22)

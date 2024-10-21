@@ -107,3 +107,30 @@ Hoofdstuk 22
 Voorbeeld yo/classtemplates/examples/genlambda.cc mist een include van <numeric>, anders compileert
 de accumulate method niet.
 
+yo/classtemplates/examples/cirquevector.h
+CirQue<std::vector<int>> &CirQue<std::vector<int>>::operator=(
+                                        CirQue<IntVect> const &rhs)
+{
+    CirQue<IntVect> tmp(rhs);
+    swap(tmp);
+    return *this;
+}
+
+return *this mankeert hier.
+
+yo/classtemplates/examples/cirquepartial.h
+
+using value_type = const_reference const &;
+Moet zijn
+using const_reference = value_type const &;
+
+template <typename Data>
+CirQue<std::vector<Data>> &CirQue<std::vector<Data>>::operator=(
+                                        CirQue<DataVect> const &rhs)
+{
+    CirQue<DataVect> tmp(rhs);
+    swap(tmp);
+    return *this;
+}
+return *this was hier te kort
+
