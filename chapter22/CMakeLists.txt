@@ -60,7 +60,61 @@ add_executable(bindings)
 target_sources(bindings PRIVATE bindings.cc)
 target_compile_features(bindings PRIVATE cxx_std_23)
 
+add_executable(resultof)
+target_sources(resultof PRIVATE resultof.cc)
+target_compile_features(resultof PRIVATE cxx_std_23)
+
+add_executable(resultof2)
+target_sources(resultof2 PRIVATE resultof2.cc)
+target_compile_features(resultof2 PRIVATE cxx_std_23)
+
+add_executable(instantiations)
+target_sources(instantiations PRIVATE instantiations.cc)
+target_compile_features(instantiations PRIVATE cxx_std_23)
+
+add_executable(boundfriends)
+target_sources(boundfriends PRIVATE boundfriends.cc)
+target_compile_features(boundfriends PRIVATE cxx_std_23)
+
+add_executable(testspec)
+target_sources(testspec PRIVATE testspec.cc)
+target_compile_features(testspec PRIVATE cxx_std_23)
+
+add_executable(friendtest1)
+target_sources(friendtest1 PRIVATE friendtest1.cc)
+target_compile_features(friendtest1 PRIVATE cxx_std_23)
+
+add_executable(friendtest2)
+target_sources(friendtest2 PRIVATE friendtest2.cc)
+target_compile_features(friendtest2 PRIVATE cxx_std_23)
+
+# Example does not compile (is nomal)
+#add_executable(friendtest3)
+#target_sources(friendtest3 PRIVATE friendtest3.cc)
+#target_compile_features(friendtest3 PRIVATE cxx_std_23)
+
+add_executable(friendtest4)
+target_sources(friendtest4 PRIVATE friendtest4.cc)
+target_compile_features(friendtest4 PRIVATE cxx_std_23)
+
+#add_executable(bounditer2)
+#target_sources(bounditer2 PRIVATE bounditer2/main.cc)
+#target_compile_features(bounditer2 PRIVATE cxx_std_23)
+
+add_executable(bounditer3)
+target_sources(bounditer3 PRIVATE bounditer3/main.cc)
+target_compile_features(bounditer3 PRIVATE cxx_std_23)
+
+add_executable(template2concrete)
+target_sources(template2concrete PRIVATE template2concrete.cc)
+target_compile_features(template2concrete PRIVATE cxx_std_23)
+
+add_executable(template2template)
+target_sources(template2template PRIVATE template2template.cc)
+target_compile_features(template2template PRIVATE cxx_std_23)
+
 install(TARGETS deducetype cirque extern genlambda genlambda2 cirquevector cirquepartial
     matrix variadic forwardtestch22 multibaseclass countnontype foldexpression tupletest
-    bindings
+    bindings resultof resultof2 instantiations boundfriends testspec friendtest1
+    friendtest2 friendtest4 bounditer3 template2concrete template2template
 DESTINATION chapter22)

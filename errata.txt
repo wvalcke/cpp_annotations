@@ -142,3 +142,23 @@ template <class ...Pack>
     };
 
 Compileert niet, er moet staan (... , args());
+
+Section 22.7
+struct Convert
+    {
+        double operator()(int x);           // int-to-double
+        std::string operator()(double x);   // double-to-string
+    };
+
+De methods moeten const zijn, want de Filter klasse operator() is ook const
+Anders compileert het niet
+
+yo/classtemplates/examples/boundfriends.cc
+template <typename Key, typename Value>
+    template <typename Key2, typename Value2>
+    Iterator<Key2, Value2> Dictionary<Key, Value>::begin()
+    {
+        return Iterator<Key, Value>(*this);
+    }
+
+Mij is het niet duidelijk waarom de begin member van Iterator een template member functie is

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cd tabletype
+g++ -c -O2 -Wall *.cc
+
+cd ..
+g++ -O2 -Wall *.cc tabletype/*.o
+
+rm tabletype/*.o
+
