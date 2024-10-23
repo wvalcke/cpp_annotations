@@ -113,8 +113,19 @@ add_executable(template2template)
 target_sources(template2template PRIVATE template2template.cc)
 target_compile_features(template2template PRIVATE cxx_std_23)
 
+add_executable(staticpolymorphism)
+target_sources(staticpolymorphism PRIVATE staticpolymorphism/polymorph.cc)
+target_compile_features(staticpolymorphism PRIVATE cxx_std_23)
+
+add_executable(nesting)
+target_sources(nesting PRIVATE nesting1.cc)
+target_compile_features(nesting PRIVATE cxx_std_23)
+
+add_subdirectory(stringptrs)
+
 install(TARGETS deducetype cirque extern genlambda genlambda2 cirquevector cirquepartial
     matrix variadic forwardtestch22 multibaseclass countnontype foldexpression tupletest
     bindings resultof resultof2 instantiations boundfriends testspec friendtest1
-    friendtest2 friendtest4 bounditer3 template2concrete template2template
+    friendtest2 friendtest4 bounditer3 template2concrete template2template staticpolymorphism
+    nesting
 DESTINATION chapter22)
