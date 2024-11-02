@@ -21,22 +21,21 @@
     {
         public:
             Derived();
-            //void member() override;
+            void member() override;
     };
-    /*template <typename T>
+    template <typename T>
     void Derived<T>::member()
     {
         std::cout << "This is Derived<T>::member()\n";
-    }*/
+    }
     template <typename T>
     Derived<T>::Derived()
     {
-        //member();
         this->member();         // Using `this' implies using the
                                 // type for which T was instantiated
-        //Derived<T>::member();   // Same: calls the Derived member
-        //Base<T>::member();      // Same: calls the Base member
-        //std::cout << "Derived<T>::Derived() completed\n";
+        Derived<T>::member();   // Same: calls the Derived member
+        Base<T>::member();      // Same: calls the Base member
+        std::cout << "Derived<T>::Derived() completed\n";
     }
 
     int main()
