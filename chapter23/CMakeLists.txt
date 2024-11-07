@@ -48,6 +48,15 @@ add_executable(structbypolicy)
 target_sources(structbypolicy PRIVATE structbypolicy.cc)
 target_compile_features(structbypolicy PRIVATE cxx_std_23)
 
+add_executable(aliastemplate)
+target_sources(aliastemplate PRIVATE aliastemplate.cc)
+target_compile_features(aliastemplate PRIVATE cxx_std_23)
+
+add_executable(basictraits)
+target_sources(basictraits PRIVATE basictraits.cc)
+target_compile_features(basictraits PRIVATE cxx_std_23)
+
 install(TARGETS basename2 templatekeyword templatekeyword2 templatekeyword3 inttype
     storagepoly storagepoly2 factorial miles alloctest storage structbypolicy
+    aliastemplate basictraits
 DESTINATION chapter23)

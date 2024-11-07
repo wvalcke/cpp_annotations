@@ -173,3 +173,17 @@ Vervangen door : Storage<string, PlacementAlloc, std::vector> storage;
 gaat wel
 verder is het niet duidelijk wat nu de rol van die allocators is. 
 
+
+yo/advancedtemplates/examples/basictraits.h
+        struct Basic<T const>
+        {
+            using Type = T;
+            enum
+            {
+                isPointer = true, --> is wrong
+                isConst = true,
+                isRef = false,
+                isRRef = false
+            };
+        };
+
