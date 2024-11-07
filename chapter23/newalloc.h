@@ -24,24 +24,31 @@ template<typename Data>
 NewAlloc<Data>::NewAlloc()
 :
     d_data(0)
-{}
+{
+    std::cout << "Default constructor NewAlloc called" << std::endl;
+}
 
 template<typename Data>
 NewAlloc<Data>::NewAlloc(Data const &data)
 :
     d_data(new Data(data))
-{}
+{
+    std::cout << "Constructor NewAlloc with argument " << data << " called" << std::endl;
+}
 
 template<typename Data>
 NewAlloc<Data>::NewAlloc(NewAlloc<Data> const &other)
 :
     d_data(new Data(*other.d_data))
-{}
+{
+    std::cout << "Copy constructor NewAlloc called" << std::endl;
+}
 
 template<typename Data>
 NewAlloc<Data>::~NewAlloc()
 {
     delete d_data;
+    std::cout << "Destructor NewAlloc called" << std::endl;
 }
 
 template<typename Data>
@@ -54,6 +61,7 @@ template<typename Data>
 NewAlloc<Data> &NewAlloc<Data>::operator=(Data const &data)
 {
     *d_data = data;
+    std::cout << "Operator= NewAlloc called with argument " << data << std::endl;
 }
 
 template<typename IData>

@@ -36,6 +36,18 @@ add_executable(miles)
 target_sources(miles PRIVATE miles.cc)
 target_compile_features(miles PRIVATE cxx_std_23)
 
+add_executable(alloctest)
+target_sources(alloctest PRIVATE alloctest.cc)
+target_compile_features(alloctest PRIVATE cxx_std_23)
+
+add_executable(storage)
+target_sources(storage PRIVATE storage.cc)
+target_compile_features(storage PRIVATE cxx_std_23)
+
+add_executable(structbypolicy)
+target_sources(structbypolicy PRIVATE structbypolicy.cc)
+target_compile_features(structbypolicy PRIVATE cxx_std_23)
+
 install(TARGETS basename2 templatekeyword templatekeyword2 templatekeyword3 inttype
-    storagepoly storagepoly2 factorial miles
+    storagepoly storagepoly2 factorial miles alloctest storage structbypolicy
 DESTINATION chapter23)

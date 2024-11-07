@@ -162,3 +162,14 @@ template <typename Key, typename Value>
     }
 
 Mij is het niet duidelijk waarom de begin member van Iterator een template member functie is
+
+
+yo/advancedtemplates/examples/storage.cc
+Compileert niet, 
+door : Storage<string, PlacementAlloc, deque> storage;
+
+Vervangen door : Storage<string, PlacementAlloc, std::vector> storage;
+
+gaat wel
+verder is het niet duidelijk wat nu de rol van die allocators is. 
+
