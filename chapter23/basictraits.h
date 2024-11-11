@@ -108,6 +108,17 @@
             };
         };
 
+        struct Char2
+        {
+            char data[2];
+        };
+
+        template<typename ClassType>
+        static Char2 fun(void (ClassType::*)());
+
+        template<typename NonClassType>
+        static char fun(...);
+
         public:
             BasicTraits(BasicTraits const &other) = delete;
 
@@ -124,7 +135,8 @@
                 isConst = Basic<TypeParam>::isConst,
 
                 isPlainType = not (isPointerType or isReferenceType or
-                                   isRvalueReferenceType or isConst)
+                                   isRvalueReferenceType or isConst),
+                isClassType = sizeof(fun<TypeParam>(0)) == sizeof(Char2)
             };
 
     };

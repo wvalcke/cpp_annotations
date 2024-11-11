@@ -4,6 +4,9 @@
 
 using namespace std;
 
+class MyClass
+{};
+
 int main()
 {
 //MAIN
@@ -27,6 +30,9 @@ int main()
                                                 isRvalueReferenceType << "\n"
       "int const &&: const ? "<< BasicTraits<int const &&>::isConst << "\n"
         "\n";
+
+     cout << "Class type (MyClass): " << BasicTraits<MyClass>::isClassType << "\n";
+     cout << "Class type (int): " << BasicTraits<int>::isClassType << "\n";
 
      BasicTraits<int *>::ValueType           value = 12;
      BasicTraits<int const *>::RvalueRefType rvalue = int(10);
