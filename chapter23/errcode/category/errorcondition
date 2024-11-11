@@ -1,0 +1,43 @@
+    namespace std {
+    class error_condition {
+        int value_;
+        std::error_category *cat_;
+    public:
+        error_condition()  
+        : error_code(0, std::generic_category()) {}
+
+        error_condition(int e, const std::error_category& c)  
+        : value_(e), cat_(&c) {}
+
+        template<class E> error_condition(E e) 
+        { *this = make_error_condition(e);}
+
+        template<class E> error_condition& operator=(E e) 
+        { *this = make_error_condition(e); }
+
+        void assign(int e, const std::error_category& c)  
+        { value_ = e; cat_ = &c; }
+
+        void clear()  
+        { *this = std::error_condition(); }
+
+        explicit operator bool() const  
+        { return value_ != 0; }
+
+        int value() const  
+        { return value_; }
+
+        const std::error_category& category() const  
+        { return cat_; }
+
+        std::string message() const 
+        { return cat_->message(value_); }
+    };
+
+    bool operator==(const error_condition& a, const error_condition &b) 
+    { return a.value() == b.value() && &a.category() == &b.category();} 
+
+
+
+
+

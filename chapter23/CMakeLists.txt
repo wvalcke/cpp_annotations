@@ -60,7 +60,13 @@ add_executable(traitstest)
 target_sources(traitstest PRIVATE traitstest.cc)
 target_compile_features(traitstest PRIVATE cxx_std_23)
 
+add_subdirectory(errcode)
+
+add_executable(typetype)
+target_sources(typetype PRIVATE typetype.cc)
+target_compile_features(typetype PRIVATE cxx_std_23)
+
 install(TARGETS basename2 templatekeyword templatekeyword2 templatekeyword3 inttype
     storagepoly storagepoly2 factorial miles alloctest storage structbypolicy
-    aliastemplate basictraits traitstest
+    aliastemplate basictraits traitstest typetype
 DESTINATION chapter23)

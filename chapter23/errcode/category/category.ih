@@ -1,0 +1,6 @@
+#include "category.h"
+
+#include "../xerr.ih"
+
+
+using namespace std;

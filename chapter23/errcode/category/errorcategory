@@ -1,0 +1,36 @@
+std::error_category serves as the base class for specific error category
+types, such as std::system_category, std::iostream_category, etc. Each
+specific category class defines the error_code - error_condition mapping and
+holds the explanatory strings for all error_conditions. The objects of error
+category classes are treated as singletons, passed by reference. 
+
+Member functions
+(constructor)
+    constructs an error_category
+
+operator=
+
+virt. name
+    obtains the name of the category
+
+virt. default_error_condition(int errorCodeEnumNr)
+    maps error_code to error_condition
+    (error_condition(ev, *this).
+
+virt equivalent
+    compares error_code and error_condition for equivalence
+
+    equivalent( int code, const std::error_condition& condition ) 
+        = default_error_condition(code) == condition.
+
+
+virt. message
+    obtains the explanatory string
+
+operator==operator!=operator<
+    compares two error categories
+
+
+
+
+

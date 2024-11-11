@@ -1,0 +1,18 @@
+// define X to activate the xerr/xerr2 macros:
+//      xerr(insertion)
+//          inserts the '<<' concatenated elements into std::cerr
+//          preceded by the name of the source file, and ended by '\n'
+//      xerr2(insertion, code)
+//          performs the insertion if X is defined, and (unconditionally)
+//          executes the statement(s) in `code'. `code' must be valid
+//          C(++) code.
+//
+#ifdef XERR
+    #include <iostream>
+    #define xerr(insertion)  std::cerr << __FILE__": " << insertion << '\n'
+    #define xerr2(insertion, b) \
+                    { std::cerr << __FILE__": " << insertion << '\n';  b;  }
+#else
+    #define xerr(insertion)
+    #define xerr2(insertion, b) b
+#endif
