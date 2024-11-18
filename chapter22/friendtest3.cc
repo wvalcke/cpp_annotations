@@ -24,7 +24,7 @@ struct String
 
 /*
 * Alhoewel dit compileert linkt het programma niet. De friend declaratie bovenaan verwacht 
-* een bepaalde signatuur zijne 2 parameters String<Type>::iterator
+* een bepaalde signatuur zijnde 2 parameters String<Type>::iterator
 * Het probleem voor de compiler zijn de 2 typename items hieronder. Hierdoor beslist de compiler
 * dat deze niet overeenkomt met de friend declaratie hieboven, waardoor de referentie naar die 
 * friend declaratie zogezegd niet bestaat, en daardoor het link probleem vertoont.
