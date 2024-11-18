@@ -70,4 +70,6 @@ size_t constexpr operator "" _NM2km()
 int main(int argc, char*argv[])
 {
     cout << "10 nautical miles is " << 10_NM2km << " kilometers\n";
+    cout << "0x10 nautical miles is " << 0x10_NM2km << " kilometers\n";
+    cout << "0b10 nautical miles is " << 0b10_NM2km << " kilometers\n";
 }

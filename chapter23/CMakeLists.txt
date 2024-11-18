@@ -16,6 +16,10 @@ add_executable(templatekeyword3)
 target_sources(templatekeyword3 PRIVATE templatekeyword3.cc)
 target_compile_features(templatekeyword3 PRIVATE cxx_std_23)
 
+add_executable(templatekeyword4)
+target_sources(templatekeyword4 PRIVATE templatekeyword4.cc)
+target_compile_features(templatekeyword4 PRIVATE cxx_std_23)
+
 add_executable(inttype)
 target_sources(inttype PRIVATE inttype.cc)
 target_compile_features(inttype PRIVATE cxx_std_23)
@@ -66,7 +70,8 @@ add_executable(typetype)
 target_sources(typetype PRIVATE typetype.cc)
 target_compile_features(typetype PRIVATE cxx_std_23)
 
-install(TARGETS basename2 templatekeyword templatekeyword2 templatekeyword3 inttype
+install(TARGETS basename2 templatekeyword templatekeyword2 templatekeyword3 
+    templatekeyword4 inttype
     storagepoly storagepoly2 factorial miles alloctest storage structbypolicy
     aliastemplate basictraits traitstest typetype
 DESTINATION chapter23)

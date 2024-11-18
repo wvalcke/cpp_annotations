@@ -36,6 +36,14 @@ struct Container
     }
 };
 
+/*
+* Waarom geen template <typename Type, typename Type::StringType_iterator = 0>
+* 2e template argument is een non type parameter, dus gaan we al zeker geen typename er voor zetten
+* De compiler weet dus dat Type::StringTye_iterator effectief een type moet zijn en kan dit dus 
+* niet verkeerd interpreteren als een static in Type 'type' bvb wat anders wel gebeurt.
+* Als we bij lhs of rhs bvb zouden verwijzen naar Type::StringType_iterator zouden we wel
+* typename er moeten voorzetten.
+*/
 template <typename Type, Type::StringType_iterator = 0>
 inline bool operator==(Type const &lhs, Type const &rhs)
 {

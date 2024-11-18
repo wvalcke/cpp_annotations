@@ -163,6 +163,15 @@ template <typename Key, typename Value>
 
 Mij is het niet duidelijk waarom de begin member van Iterator een template member functie is
 
+Class template derivation (section 22.11)
+
+template<typename T>
+    Derived<T>::Derived(T const &t)
+    :
+        Base(t)
+    {}
+Dit compileert niet, het moet Base<T>(t) zijn
+
 
 yo/advancedtemplates/examples/storage.cc
 Compileert niet, 

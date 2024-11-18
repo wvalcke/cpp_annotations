@@ -88,10 +88,10 @@ add_executable(friendtest2)
 target_sources(friendtest2 PRIVATE friendtest2.cc)
 target_compile_features(friendtest2 PRIVATE cxx_std_23)
 
-# Example does not compile (is nomal)
-#add_executable(friendtest3)
-#target_sources(friendtest3 PRIVATE friendtest3.cc)
-#target_compile_features(friendtest3 PRIVATE cxx_std_23)
+# Example does not compile (is normal)
+add_executable(friendtest3)
+target_sources(friendtest3 PRIVATE friendtest3.cc)
+target_compile_features(friendtest3 PRIVATE cxx_std_23)
 
 add_executable(friendtest4)
 target_sources(friendtest4 PRIVATE friendtest4.cc)
@@ -131,10 +131,14 @@ add_executable(variadicsizeof)
 target_sources(variadicsizeof PRIVATE variadicsizeof.cc)
 target_compile_features(variadicsizeof PRIVATE cxx_std_23)
 
+add_executable(derive1)
+target_sources(derive1 PRIVATE derive1.cc)
+target_compile_features(derive1 PRIVATE cxx_std_23)
+
 install(TARGETS deducetype cirque extern genlambda genlambda2 cirquevector cirquepartial
     matrix variadic forwardtestch22 multibaseclass countnontype foldexpression tupletest
     bindings resultof resultof2 instantiations boundfriends testspec friendtest1
     friendtest2 friendtest4 friendtest5
     bounditer3 template2concrete template2template staticpolymorphism
-    nesting variadicsizeof
+    nesting variadicsizeof derive1
 DESTINATION chapter22)
