@@ -97,6 +97,10 @@ add_executable(friendtest4)
 target_sources(friendtest4 PRIVATE friendtest4.cc)
 target_compile_features(friendtest4 PRIVATE cxx_std_23)
 
+add_executable(friendtest5)
+target_sources(friendtest5 PRIVATE friendtest5.cc)
+target_compile_features(friendtest5 PRIVATE cxx_std_23)
+
 #add_executable(bounditer2)
 #target_sources(bounditer2 PRIVATE bounditer2/main.cc)
 #target_compile_features(bounditer2 PRIVATE cxx_std_23)
@@ -130,6 +134,7 @@ target_compile_features(variadicsizeof PRIVATE cxx_std_23)
 install(TARGETS deducetype cirque extern genlambda genlambda2 cirquevector cirquepartial
     matrix variadic forwardtestch22 multibaseclass countnontype foldexpression tupletest
     bindings resultof resultof2 instantiations boundfriends testspec friendtest1
-    friendtest2 friendtest4 bounditer3 template2concrete template2template staticpolymorphism
+    friendtest2 friendtest4 friendtest5
+    bounditer3 template2concrete template2template staticpolymorphism
     nesting variadicsizeof
 DESTINATION chapter22)
