@@ -123,9 +123,13 @@ target_compile_features(nesting PRIVATE cxx_std_23)
 
 add_subdirectory(stringptrs)
 
+add_executable(variadicsizeof)
+target_sources(variadicsizeof PRIVATE variadicsizeof.cc)
+target_compile_features(variadicsizeof PRIVATE cxx_std_23)
+
 install(TARGETS deducetype cirque extern genlambda genlambda2 cirquevector cirquepartial
     matrix variadic forwardtestch22 multibaseclass countnontype foldexpression tupletest
     bindings resultof resultof2 instantiations boundfriends testspec friendtest1
     friendtest2 friendtest4 bounditer3 template2concrete template2template staticpolymorphism
-    nesting
+    nesting variadicsizeof
 DESTINATION chapter22)
