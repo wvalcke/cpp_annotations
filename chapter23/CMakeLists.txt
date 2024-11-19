@@ -78,8 +78,21 @@ add_executable(conversion)
 target_sources(conversion PRIVATE conversion.cc)
 target_compile_features(conversion PRIVATE cxx_std_23)
 
+add_executable(variadiclistsize)
+target_sources(variadiclistsize PRIVATE variadiclistsize.cc)
+target_compile_features(variadiclistsize PRIVATE cxx_std_23)
+
+add_executable(typelistlength)
+target_sources(typelistlength PRIVATE typelistlength.cc)
+target_compile_features(typelistlength PRIVATE cxx_std_23)
+
+add_executable(listsearch)
+target_sources(listsearch PRIVATE listsearch.cc)
+target_compile_features(listsearch PRIVATE cxx_std_23)
+
 install(TARGETS basename2 templatekeyword templatekeyword2 templatekeyword3 
     templatekeyword4 inttype
     storagepoly storagepoly2 factorial miles alloctest storage structbypolicy
-    aliastemplate basictraits traitstest typetype enableif conversion
+    aliastemplate basictraits traitstest typetype enableif conversion variadiclistsize
+    typelistlength listsearch
 DESTINATION chapter23)
