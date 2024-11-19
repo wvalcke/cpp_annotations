@@ -70,8 +70,16 @@ add_executable(typetype)
 target_sources(typetype PRIVATE typetype.cc)
 target_compile_features(typetype PRIVATE cxx_std_23)
 
+add_executable(enableif)
+target_sources(enableif PRIVATE enableif.cc)
+target_compile_features(enableif PRIVATE cxx_std_23)
+
+add_executable(conversion)
+target_sources(conversion PRIVATE conversion.cc)
+target_compile_features(conversion PRIVATE cxx_std_23)
+
 install(TARGETS basename2 templatekeyword templatekeyword2 templatekeyword3 
     templatekeyword4 inttype
     storagepoly storagepoly2 factorial miles alloctest storage structbypolicy
-    aliastemplate basictraits traitstest typetype
+    aliastemplate basictraits traitstest typetype enableif conversion
 DESTINATION chapter23)
