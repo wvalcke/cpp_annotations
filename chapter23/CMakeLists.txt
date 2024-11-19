@@ -90,9 +90,21 @@ add_executable(listsearch)
 target_sources(listsearch PRIVATE listsearch.cc)
 target_compile_features(listsearch PRIVATE cxx_std_23)
 
+add_executable(selectfromtypelist)
+target_sources(selectfromtypelist PRIVATE selectfromtypelist.cc)
+target_compile_features(selectfromtypelist PRIVATE cxx_std_23)
+
+add_executable(prefixappendtypelist)
+target_sources(prefixappendtypelist PRIVATE prefixappendtypelist.cc)
+target_compile_features(prefixappendtypelist PRIVATE cxx_std_23)
+
+add_executable(erasetypelist)
+target_sources(erasetypelist PRIVATE erasetypelist.cc)
+target_compile_features(erasetypelist PRIVATE cxx_std_23)
+
 install(TARGETS basename2 templatekeyword templatekeyword2 templatekeyword3 
     templatekeyword4 inttype
     storagepoly storagepoly2 factorial miles alloctest storage structbypolicy
     aliastemplate basictraits traitstest typetype enableif conversion variadiclistsize
-    typelistlength listsearch
+    typelistlength listsearch selectfromtypelist prefixappendtypelist erasetypelist
 DESTINATION chapter23)

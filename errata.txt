@@ -196,3 +196,5 @@ yo/advancedtemplates/examples/basictraits.h
             };
         };
 
+chapter 23, section 23.10.5.3 Het voorbeeld bij het eerste item is van ErraseIdx, 
+maar dit moet van struct Erase zijn.
