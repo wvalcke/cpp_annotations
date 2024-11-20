@@ -196,6 +196,8 @@ yo/advancedtemplates/examples/basictraits.h
             };
         };
 
+chapter 23, section 23.10.5.3 Het voorbeeld bij het eerste item is van ErraseIdx, 
+maar dit moet van struct Erase zijn.
 
 23.13.2.3 (Compound requirements)
 Moet dit zijn
