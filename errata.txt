@@ -196,3 +196,49 @@ yo/advancedtemplates/examples/basictraits.h
             };
         };
 
+
+23.13.2.3 (Compound requirements)
+Moet dit zijn
+
+template<typename Compound, typename Specified>
+concept Same = SameTypes<Compound, Specified>::value;
+
+Om te voldoen aan de constraint moet volgende er ook staan
+
+template <typename Type, typename ReturnType> 
+concept Return =
+requires(Type par)
+{
+                    // par[..] must return a `ReturnType'
+    { par[0] } -> Same<ReturnType&>; 
+};
+
+
+section 23.13.3.1
+Kan hier een voorbeeld programm van gemaakt worden?
+template<typename Type>
+    concept BoolFun = 
+        requires(Type param)
+        {
+            { fun(param) } -> std::boolean;
+        };
+
+voorts bestaat std::boolean niet echt ?
+
+predicate voorbeeld:
+
+{ container.begin() } -> Iter;
+        { container.end() }   -> Iter;
+
+Iter waar staat de definitie ?
+    
+    int target = 4;
+    fun(
+        [&](int value)
+        {
+            return value == target;
+        },
+        4
+    );
+
+fun staat nergens gedefinieerd?
