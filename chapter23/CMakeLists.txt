@@ -90,6 +90,18 @@ add_executable(listsearch)
 target_sources(listsearch PRIVATE listsearch.cc)
 target_compile_features(listsearch PRIVATE cxx_std_23)
 
+add_executable(selectfromtypelist)
+target_sources(selectfromtypelist PRIVATE selectfromtypelist.cc)
+target_compile_features(selectfromtypelist PRIVATE cxx_std_23)
+
+add_executable(prefixappendtypelist)
+target_sources(prefixappendtypelist PRIVATE prefixappendtypelist.cc)
+target_compile_features(prefixappendtypelist PRIVATE cxx_std_23)
+
+add_executable(erasetypelist)
+target_sources(erasetypelist PRIVATE erasetypelist.cc)
+target_compile_features(erasetypelist PRIVATE cxx_std_23)
+
 add_executable(usingtest)
 target_sources(usingtest PRIVATE usingtest.cc)
 target_compile_features(usingtest PRIVATE cxx_std_23)
@@ -201,27 +213,18 @@ target_compile_features(addableconcept PRIVATE cxx_std_23)
 add_executable(partialconcept)
 target_sources(partialconcept PRIVATE partialconcept.cc)
 target_compile_features(partialconcept PRIVATE cxx_std_23)
-add_executable(selectfromtypelist)
-target_sources(selectfromtypelist PRIVATE selectfromtypelist.cc)
-target_compile_features(selectfromtypelist PRIVATE cxx_std_23)
 
-add_executable(prefixappendtypelist)
-target_sources(prefixappendtypelist PRIVATE prefixappendtypelist.cc)
-target_compile_features(prefixappendtypelist PRIVATE cxx_std_23)
-
-add_executable(erasetypelist)
-target_sources(erasetypelist PRIVATE erasetypelist.cc)
-target_compile_features(erasetypelist PRIVATE cxx_std_23)
 
 install(TARGETS basename2 templatekeyword templatekeyword2 templatekeyword3 
     templatekeyword4 inttype
     storagepoly storagepoly2 factorial miles alloctest storage structbypolicy
     aliastemplate basictraits traitstest typetype enableif conversion variadiclistsize
-    typelistlength listsearch usingtest multibase exprtempl exprtempl2 exprtempl3
+    typelistlength listsearch selectfromtypelist prefixappendtypelist erasetypelist
+    usingtest multibase exprtempl exprtempl2 exprtempl3
     exprtempl4 exprtempl5 exprtempl6 exprtempl7 exprtempl8 exprtempl9
     exprtempl10 exprtempl11 simpleconcept typeconcept returnconcept returnconcept2
     predefconcept conceptstringret convertconcept constructibleconcept invokableconcept
     predicateconcept relationconcept sizesum allintegralconcept addableconcept
     partialconcept
-    typelistlength listsearch selectfromtypelist prefixappendtypelist erasetypelist
+    
 DESTINATION chapter23)
