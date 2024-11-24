@@ -1,0 +1,130 @@
+template <typename T>
+RecursiveGenerator<T>::Promise::Promise() noexcept
+: 
+    d_parentOrLeaf(this),
+    d_root(this)
+{}
+
+template <typename T>
+inline auto RecursiveGenerator<T>::Promise::get_return_object() noexcept
+{
+    return RecursiveGenerator<T>{ *this };
+}
+
+template <typename T>
+inline void RecursiveGenerator<T>::Promise::unhandled_exception() noexcept
+{
+    d_exception = std::current_exception();
+}
+
+template <typename T>
+std::suspend_always RecursiveGenerator<T>::Promise::yield_value(T &value)
+                                                                    noexcept
+{
+    d_value = std::addressof(value);
+    return {};
+}
+
+template <typename T>
+std::suspend_always RecursiveGenerator<T>::Promise::yield_value(T &&value)
+                                                                    noexcept
+{
+    d_value = std::addressof(value);
+    return {};
+}
+
+template <typename T>
+inline auto 
+RecursiveGenerator<T>::Promise::yield_value(RecursiveGenerator &&generator)
+                                                                    noexcept
+{
+    return yield_value(generator);
+}
+
+template <typename T>
+auto RecursiveGenerator<T>::Promise::yield_value(
+                                    RecursiveGenerator &generator) noexcept
+{
+    if (generator.d_promise != nullptr)
+    {
+        d_root->d_parentOrLeaf = generator.d_promise;
+        generator.d_promise->d_root = d_root;
+        generator.d_promise->d_parentOrLeaf = this;
+        generator.d_promise->resume();
+
+        if (!generator.d_promise->is_complete())
+            return Awaitable{ generator.d_promise };
+
+        d_root->d_parentOrLeaf = this;
+    }
+
+    return Awaitable{ 0 };
+}
+
+template <typename T>
+inline void RecursiveGenerator<T>::Promise::destroy() noexcept
+{
+    Handle::from_promise(*this).destroy();
+}
+
+template <typename T>
+void RecursiveGenerator<T>::Promise::throw_if_exception()
+{
+    if (d_exception != nullptr)
+        std::rethrow_exception(std::move(d_exception));
+}
+
+template <typename T>
+inline bool RecursiveGenerator<T>::Promise::is_complete() noexcept
+{
+    return Handle::from_promise(*this).done();
+}
+
+template <typename T>
+inline T &RecursiveGenerator<T>::Promise::value() noexcept
+{
+    return *(d_parentOrLeaf->d_value);
+}
+
+template <typename T>
+void RecursiveGenerator<T>::Promise::pull() noexcept
+{
+    d_parentOrLeaf->resume();
+
+    while (d_parentOrLeaf != this && d_parentOrLeaf->is_complete())
+    {
+        d_parentOrLeaf = d_parentOrLeaf->d_parentOrLeaf;
+        d_parentOrLeaf->resume();
+    }
+}
+
+template <typename T>
+inline void RecursiveGenerator<T>::Promise::resume() noexcept
+{
+    Handle::from_promise(*this).resume();
+}
+
+template <typename T>
+inline RecursiveGenerator<T>::Promise::Awaitable::Awaitable(
+                                                        Promise *childPromise)
+: 
+    d_childPromise(childPromise)
+{}
+
+template <typename T>
+inline bool RecursiveGenerator<T>::Promise::Awaitable::await_ready() noexcept
+{
+    return this->d_childPromise == 0;
+}
+
+template <typename T>
+inline void RecursiveGenerator<T>::Promise::Awaitable::await_suspend(Handle) 
+                                                                    noexcept
+{}
+
+template <typename T>
+inline void RecursiveGenerator<T>::Promise::Awaitable::await_resume()
+{
+    if (this->d_childPromise != 0)
+        this->d_childPromise->throw_if_exception();
+}

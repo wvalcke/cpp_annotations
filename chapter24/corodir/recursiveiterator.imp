@@ -1,0 +1,56 @@
+template <typename T, typename Promise>
+inline RecGenIterator<T, Promise>::RecGenIterator(Promise* promise) noexcept
+: 
+    d_promise(promise)
+{}
+
+template <typename T, typename Promise>
+inline bool RecGenIterator<T, Promise>::
+operator==(RecGenIterator const &other) const noexcept
+{
+    return d_promise == other.d_promise;
+}
+
+template <typename T, typename Promise>
+inline bool RecGenIterator<T, Promise>::operator!=(
+                                RecGenIterator const &other) const noexcept
+{
+    return d_promise != other.d_promise;
+}
+
+template <typename T, typename Promise>
+RecGenIterator<T, Promise> &RecGenIterator<T, Promise>::operator++()
+{
+    d_promise->pull();
+    if (d_promise->is_complete())
+    {
+        auto *temp = d_promise;
+        d_promise = nullptr;
+        temp->throw_if_exception();
+    }
+
+    return *this;
+}
+
+template <typename T, typename Promise>
+void RecGenIterator<T, Promise>:: operator++(int)
+{
+    operator++();
+}
+
+template <typename T, typename Promise>
+inline typename RecGenIterator<T, Promise>::Reference 
+RecGenIterator<T, Promise>::operator*() const noexcept
+{
+    return static_cast<Reference>(d_promise->value());
+}
+
+template <typename T, typename Promise>
+inline T *RecGenIterator<T, Promise>::operator->() const noexcept
+{
+    return std::addressof(operator*());
+}
+
+
+
+

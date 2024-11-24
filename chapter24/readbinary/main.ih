@@ -1,0 +1,9 @@
+#include <iostream>
+#include <exception>
+
+#include "floats/floats.h"
+
+using namespace std;
+
+void usage();       // throws 1
+int handle(exception_ptr ptr);

@@ -1,0 +1,71 @@
+template <typename T>
+Generator<T>::Generator(Generator &&tmp) noexcept
+: 
+    d_handle(tmp.d_handle)
+{
+    tmp.d_handle = nullptr;
+}
+
+template <typename T>
+Generator<T>::~Generator()
+{
+    if (d_handle)
+        d_handle.destroy();
+}
+
+template <typename T>
+Generator<T> &Generator<T>::operator=(Generator<T> &&tmp) noexcept
+{
+    swap(tmp);
+    return *this;
+}
+
+template <typename T>
+Iterator<T> Generator<T>::begin()
+{
+    if (d_handle)
+    {
+        d_handle.resume();
+        if (d_handle.done())
+            d_handle.promise().rethrow_if_exception();
+    }
+
+    return Iterator<T>{ d_handle };
+}
+
+template <typename T>
+inline Sentinel Generator<T>::end() noexcept
+{
+    return Sentinel{};
+}
+
+template <typename T>
+inline void Generator<T>::swap(Generator &other) noexcept
+{
+    std::swap(d_handle, other.d_handle);
+}
+
+template <typename T>
+inline
+Generator<T>::Generator(Handle handle) noexcept
+: 
+    d_handle(handle)
+{}
+
+//------------------------------------------------
+
+template<typename FUNC, typename T>
+Generator<
+    std::invoke_result_t<
+        FUNC &, 
+        typename Generator<T>::iterator::reference>
+    >
+fmap(FUNC func, Generator<T> source)
+{
+    for (auto &&value: source)
+        co_yield std::invoke(
+                    func, 
+                    static_cast<decltype(value)>(value)
+                );
+}
+

@@ -1,0 +1,62 @@
+template<typename T>
+inline Iterator<T>::Iterator(Handle handle) noexcept
+:
+    d_coHandle(handle)
+{}
+
+
+template<typename T>
+Iterator<T> &Iterator<T>::operator++()
+{
+    d_coHandle.resume();
+    if (d_coHandle.done())
+    {
+        d_coHandle.promise().rethrow_if_exception();
+    }
+
+    return *this;
+}
+
+template<typename T>
+inline typename Promise<T>::Reference Iterator<T>::operator*() const noexcept
+{
+    return d_coHandle.promise().value();
+}
+
+template<typename T>
+inline typename Promise<T>::Value *Iterator<T>::operator->() const noexcept
+{
+    return std::addressof(operator*());
+}
+
+// Need to provide post-increment operator to implement the 'Range' concept.
+template<typename T>
+inline void Iterator<T>::operator++(int)
+{
+    operator++();
+}
+    
+template<typename T>
+inline bool operator==(Iterator<T> const &it, Sentinel) noexcept
+{
+    return not it.d_coHandle or it.d_coHandle.done();
+}
+
+template<typename T>
+inline bool operator!=(Iterator<T> const &it, Sentinel s) noexcept
+{
+     return not (it == s);
+}
+
+template<typename T>
+inline bool operator==(Sentinel s, Iterator<T> const &it) noexcept
+{
+    return it == s;
+}
+
+template<typename T>
+inline bool operator!=(Sentinel s, Iterator<T> const &it) noexcept
+{
+    return it != s;
+}
+

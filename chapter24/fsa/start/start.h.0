@@ -1,0 +1,64 @@
+#ifndef INCLUDED_START_
+#define INCLUDED_START_
+
+#include "../../promisebase/promisebase.h"
+#include "../awaiter/awaiter.h"
+
+#include "../letter/letter.h"
+#include "../digit/digit.h"
+#include "../done/done.h"
+
+class Start: public Awaiter
+{
+    struct State: public PromiseBase<Start, State> 
+    {
+        template <typename NextState>
+        NextState &await_transform(NextState &nextState) const;
+
+//         Letter &await_transform(Letter &letter) const
+//         {
+//             return letter;
+//         }
+//         Digit &await_transform(Digit &digit) const
+//         {
+//             return digit;
+//         }
+//         Done &await_transform(Done &done) const
+//         {
+//             return done;
+
+    };
+
+    std::coroutine_handle<State> d_handle;
+
+    public:
+        using promise_type = State;
+        using Handle = std::coroutine_handle<State>;
+
+        explicit Start(Handle handle);
+        ~Start();
+
+        void go();
+
+        template <typename HandleType>
+        std::coroutine_handle<State> await_suspend(HandleType &handle);
+};
+
+
+template <typename HandleType>
+std::coroutine_handle<Start::State> Start::await_suspend(HandleType &handle)
+{
+    auto ret = d_handle;
+    d_handle = 0;
+    return ret;
+}
+
+template <typename NextState>
+inline NextState &Start::State::await_transform(NextState &nextState) const
+{
+    return nextState;
+}
+        
+extern Start g_start;
+
+#endif

@@ -244,3 +244,7 @@ Iter waar staat de definitie ?
     );
 
 fun staat nergens gedefinieerd?
+
+Chapter 24, section 24.8 voorbeeld van de iteratoren.
+De reset methode van Fibo::State alsook de constructor van Fibo::State lijkt wat vreemd.
+Waarom references opslaan ? d_reset = d_start. Logica hiervan ?

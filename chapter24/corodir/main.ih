@@ -1,0 +1,36 @@
+// Copyright (c) Lewis Baker
+// Licenced under MIT license. See LICENSE.txt for details.
+
+#if __has_include(<coroutine>)
+    #include <coroutine>
+#else
+    #include <experimental/coroutine>
+    namespace std
+    {
+        using std::experimental::coroutine_handle;
+        using std::experimental::noop_coroutine;
+        using std::experimental::suspend_always;
+        using std::experimental::suspend_never;
+    } // namespace std
+#endif
+
+#include <type_traits>
+#include <utility>
+#include <exception>
+#include <iterator>
+#include <functional>
+#include <string>
+#include <dirent.h>
+#include <iostream>
+
+
+#include "generatorpromise.h"
+#include "sentinel.h"
+#include "iterator.h"
+#include "generator.h"
+#include "recursivegenerator.h"
+
+using DirEntry = dirent;
+using Pair = std::pair<DirEntry, char const *>;
+
+using namespace std;

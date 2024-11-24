@@ -1,0 +1,80 @@
+template<typename T>
+RecursiveGenerator<T>::RecursiveGenerator(Promise& promise) noexcept
+: 
+    d_promise(&promise)
+{}
+
+template<typename T>
+RecursiveGenerator<T>:: RecursiveGenerator(RecursiveGenerator&& tmp) noexcept
+: 
+    d_promise(tmp.d_promise)
+{
+    tmp.d_promise = 0;
+}
+
+template<typename T>
+RecursiveGenerator<T>::~RecursiveGenerator()
+{
+    if (d_promise != nullptr)
+        d_promise->destroy();
+}
+
+template<typename T>
+RecursiveGenerator<T> &RecursiveGenerator<T>::RecursiveGenerator::operator=(
+                                            RecursiveGenerator &&tmp) noexcept 
+{
+    if (this != &tmp)
+    {
+        if (d_promise != 0)
+            d_promise->destroy();
+
+        d_promise = tmp.d_promise;
+        tmp.d_promise = 0;
+    }
+
+    return *this;
+}
+
+
+template <typename T>
+RecGenIterator<T, typename RecursiveGenerator<T>::Promise> 
+RecursiveGenerator<T>::begin()
+{
+    if (d_promise != nullptr)
+    {
+        d_promise->pull();
+
+        if (!d_promise->is_complete())
+            return RecGenIterator<T, Promise>{ d_promise };
+
+        d_promise->throw_if_exception();
+    }
+
+    return { };
+}
+
+template<typename T>
+inline RecGenIterator<T, typename RecursiveGenerator<T>::Promise> 
+RecursiveGenerator<T>::end() noexcept
+{
+    return { };
+}
+
+template<typename T>
+inline void RecursiveGenerator<T>::swap(RecursiveGenerator &other) noexcept
+{
+    std::swap(d_promise, other.d_promise);
+}
+
+
+template<typename FUNC, typename T>
+Generator<
+    std::invoke_result_t<
+        FUNC &, typename RecursiveGenerator<T>::RecGenIterator::reference
+    >
+> fmap(FUNC func, RecursiveGenerator<T> source)
+{
+    for (auto &&value: source)
+        co_yield std::invoke(func, static_cast<decltype(value)>(value));
+}
+

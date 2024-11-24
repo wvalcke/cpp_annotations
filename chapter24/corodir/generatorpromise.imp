@@ -1,0 +1,49 @@
+template<typename T>
+template<
+    typename U, std::enable_if_t<!std::is_rvalue_reference<U>::value, int>>
+std::suspend_always 
+    Promise<T>::yield_value(std::remove_reference_t<T>& value) 
+                                                                    noexcept
+{
+    d_valuePtr = std::addressof(value);
+    return {};
+}
+
+template<typename T>
+std::suspend_always 
+    Promise<T>::yield_value(std::remove_reference_t<T>&& value) 
+                                                                    noexcept
+{
+    d_valuePtr = std::addressof(value);
+    return {};
+}
+
+template<typename T>
+inline void Promise<T>::unhandled_exception()
+{
+    d_exception = std::current_exception();
+}
+
+template<typename T>
+inline typename Promise<T>::Reference Promise<T>::value() const noexcept 
+{
+    return static_cast<Reference>(*d_valuePtr);
+}
+
+template<typename T>
+void Promise<T>::rethrow_if_exception()
+{
+    if (d_exception)
+        std::rethrow_exception(d_exception);
+}
+
+template<typename T>
+inline Generator<T> Promise<T>::get_return_object() noexcept
+{
+    return Generator<T>{ 
+                std::coroutine_handle<
+                            Promise<T>
+                        >::from_promise(*this) 
+           };
+}
+

@@ -1,0 +1,16 @@
+#include "start.h"
+
+#include <iostream>
+
+#include "../letter/letter.h"
+#include "../digit/digit.h"
+#include "../done/done.h"
+
+using namespace std;
+
+// inline  void const *Start::handle() const
+// {
+//     return &d_handle;
+// }
+
+Start coStart();

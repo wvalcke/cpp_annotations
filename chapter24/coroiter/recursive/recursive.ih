@@ -1,0 +1,8 @@
+#include "recursive.h"
+
+#include "../fibo/fibo.h"
+#include <iostream>
+
+extern Fibo g_fibo;
+
+using namespace std;

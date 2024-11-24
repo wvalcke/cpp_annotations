@@ -1,0 +1,10 @@
+#include <iostream>
+#include <string>
+
+#include "fibo/fibo.h"
+#include "recursive/recursive.h"
+
+using namespace std;
+
+Recursive recursiveCoro(size_t level);
+Fibo fiboCoro(Triplet triplet);

@@ -1,0 +1,21 @@
+Recursive recursiveCoro(string const &directory)
+{
+    chdir(directory.c_str());               // change to the directory
+
+    while ((entry = nextEntry()))           // visit all its entries
+    {
+        string const &name = entry.name();
+        co_yield name;                      // yield the entry's name
+
+        if (entry.type() == DIRECTORY)      // a directory?
+        {                                   // get the full path
+            string path = pathName(directory, name);
+            co_yield path;                  // yield the full path
+
+            auto rec = recursiveCoro(path); // visit the entries of 
+            string next;                    // the subdir (and of its
+            while (rec.next(&next))         // subdirs)
+                co_yield next;              // and yield them
+        }
+    }
+}

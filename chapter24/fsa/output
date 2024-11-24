@@ -1,0 +1,11 @@
+at `a' from start to letter
+at char #10: from letter to start
+at `1' from start to digit
+at char #10: from digit to start
+at `a' from start to letter
+at `1' from letter to digit
+at char #10: from digit to start
+at `1' from start to digit
+at `a' from digit to letter
+at char #10: from letter to start
+at EOF: done
